@@ -1,0 +1,301 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sidebar {
+  background-image: url(../src/images/bg-sidebar-desktop.svg);
+  height: 550px;
+  width: 260px;
+}
+
+.circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: solid hsl(231, 11%, 63%) 0.2px;
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.step-info {
+  color: white;
+  font-family: Ubuntu-bold;
+  font-size: 15px;
+}
+
+.step {
+  color: hsl(231, 11%, 63%);
+}
+
+@font-face {
+  font-family: Ubuntu-bold;
+  src: url(../public/fonts/Ubuntu-Bold.ttf);
+}
+
+@font-face {
+  font-family: Ubuntu-Medium;
+  src: url(../public/fonts/Ubuntu-Medium.ttf);
+}
+
+@font-face {
+  font-family: Ubuntu-Regular;
+  src: url(../public/fonts/Ubuntu-Regular.ttf);
+}
+
+body {
+  font-family: Ubuntu-Regular;
+  background-color: hsl(230, 100%, 99%);
+  color: hsl(213, 96%, 18%);
+}
+
+.container-app {
+  font-family: Ubuntu-Regular;
+}
+
+.header {
+  font-family: Ubuntu-Medium;
+  color: hsl(213, 96%, 18%);
+  font-weight: 600;
+  font-size: 25px;
+  width: 33.5rem;
+}
+
+.container {
+  width: 900px !important;
+}
+
+.paragraph-text {
+  color: hsl(231, 11%, 63%);
+}
+
+.firstView input {
+  border: solid 2px hsl(231, 11%, 63%);
+  border-radius: 5px;
+  height: 35px;
+}
+
+.inputError {
+  width: 31.25rem;
+  color: red !important;
+}
+
+.next-step-btn {
+  background-color: hsl(213, 96%, 18%) !important;
+  border: none !important;
+}
+
+
+#root {
+  background-color: hsl(206, 94%, 87%);
+}
+
+label {
+  color: hsl(213, 96%, 18%);
+  font-family: Ubuntu-medium;
+
+}
+
+.card {
+  width:10rem !important;
+
+}
+
+.card h6 {
+  color: hsl(213, 96%, 18%) !important;
+}
+
+.card p {
+  color: hsl(231, 11%, 63%);
+}
+
+
+.back-button {
+  background-color: transparent;
+  border: none;
+  color: hsl(213, 96%, 18%);
+  text-decoration: none;
+}
+
+.toggle-container {
+  height: 55px;
+  color: hsl(213, 96%, 18%);
+  font-family:Ubuntu-Medium ;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 23px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.switch input:checked + .slider {
+  background-color: hsl(213, 96%, 18%);
+}
+
+.switch input:focus + .slider {
+  box-shadow: hsl(213, 96%, 18%);;
+}
+
+.switch input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+.add-ons-card {
+  width: 33.5rem;
+  height: 5rem;
+  border-color: hsl(243, 100%, 62%) !important;
+}
+.add-ons-card p{
+  margin: 0;
+}
+
+.add-ons-card .service-info {
+  color: hsl(213, 96%, 18%);
+  font-family: Ubuntu-Medium;
+}
+
+.add-ons-card .service-desc {
+  color: hsl(231, 11%, 63%);
+}
+
+.add-ons-card .service-price {
+  color: hsl(243, 100%, 62%);
+}
+
+.summary-card .change {
+
+}
+
+.summary-card .arcade-monthly {
+  margin: 0 !important;
+  color: hsl(213, 96%, 18%);
+  font-family: Ubuntu-bold;
+}
+
+.summary-card .price {
+  color: hsl(213, 96%, 18%);
+  font-family: Ubuntu-bold;
+  text-decoration:none !important;
+  margin: 0 !important;
+}
+
+.summary-card .services {
+  margin: 0 !important;
+  color: hsl(231, 11%, 63%);
+}
+
+.summary-card .price2 {
+  margin: 0 !important;
+  font-family: Ubuntu-Regular;
+  color: hsl(213, 96%, 18%);
+}
+
+.confirm-btn {
+  background-color: hsl(243, 100%, 62%);
+}
+
+.thankyou {
+  width: 100px;
+}
+
+.text-wrap {
+  width: 28rem;
+}
+
+.active {
+  border: 1px solid hsl(243, 100%, 62%) !important;
+}
+
+.button-wrap {
+  width: 535px;
+}
+
+.total-price {
+  color: hsl(243, 100%, 62%) !important;
+}
+
+.StepActive{
+ background-color:hsl(206, 94%, 87%)
+}
