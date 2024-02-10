@@ -22,9 +22,9 @@ const StepTwoView: React.FC<StepTwoViewProps> = ({ nextStep, prevStep }) => {
         setIsYearlyBilling(prevState => !prevState);
     }
 
-    const getImageSource = (name: string): string => {
+    const getImageSource = (name: string): string=> {
         switch (name) {
-            case name:
+            case "Arcade":
                 return Arcade;
             case "Advanced":
                 return Advanced;
@@ -50,7 +50,7 @@ const StepTwoView: React.FC<StepTwoViewProps> = ({ nextStep, prevStep }) => {
                         return (
                             <RenderServicePlan
                                 key={index}
-                                imageSrc={getImageSource(servicePlan.name)}
+                                imageSrc={getImageSource(plan.name)}
                                 name={servicePlan.name}
                                 price={servicePlan.getPrice(isYearlyBilling)}
                                 isSelected={selectedPlan && selectedPlan.name === servicePlan.name}
