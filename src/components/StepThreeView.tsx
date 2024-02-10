@@ -23,23 +23,17 @@ function ServiceCard({service}: ServiceCardProps) {
         const {checked} = event.target;
         if (checked) {
             setSelectedServices(prevSelectedServices => [
-                ...prevSelectedServices,
-                {
-                    serviceName: service.name,
-                    serviceDesc: service.description || "",
-                    monthlyPrice: service.monthlyPrice,
-                    yearlyPrice: service.yearlyPrice,
-                }
+                ...prevSelectedServices.concat(service)
             ]);
         } else {
             setSelectedServices(prevSelectedServices =>
-                prevSelectedServices.filter(selected => selected.serviceName !== service.name)
+                prevSelectedServices.filter(selected => selected.name !== service.name)
             );
         }
     };
 
 
-    const isChecked = selectedServices.some(selected => selected.serviceName === service.name);
+    const isChecked = selectedServices.some(selected => selected.name === service.name);
 
     return (
         <div className="add-ons-card border rounded align-items-center d-flex justify-content-between my-2">

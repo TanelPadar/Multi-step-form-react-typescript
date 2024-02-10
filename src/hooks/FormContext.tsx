@@ -1,20 +1,13 @@
 import React, { createContext, useContext, useState, ReactNode, Dispatch, SetStateAction } from 'react';
-import {IServicePlan} from "../models/ServicePlan";
+import { IServicePlan } from "../models/ServicePlan";
 
 interface FormContextType {
     isYearlyBilling: boolean;
     setIsYearlyBilling: Dispatch<SetStateAction<boolean>>;
     selectedPlan: IServicePlan;
     setSelectedPlan: Dispatch<SetStateAction<IServicePlan>>;
-    selectedServices: SelectedService[];
-    setSelectedServices: Dispatch<SetStateAction<SelectedService[]>>;
-}
-    
-interface SelectedService {
-    serviceName: string;
-    serviceDesc: string;
-    monthlyPrice: number;
-    yearlyPrice: number;
+    selectedServices: IServicePlan[];
+    setSelectedServices: Dispatch<SetStateAction<IServicePlan[]>>;
 }
 
 const FormContext = createContext<FormContextType | undefined>(undefined);
@@ -34,7 +27,7 @@ interface FormProviderProps {
 export const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
     const [isYearlyBilling, setIsYearlyBilling] = useState<boolean>(false);
     const [selectedPlan, setSelectedPlan] = useState<IServicePlan>({ name: "", monthlyPrice: 0, yearlyPrice: 0 });
-    const [selectedServices, setSelectedServices] = useState<SelectedService[]>([]);
+    const [selectedServices, setSelectedServices] = useState<IServicePlan[]>([]);
 
     return (
         <FormContext.Provider value={{ isYearlyBilling, setIsYearlyBilling, selectedPlan, setSelectedPlan, selectedServices, setSelectedServices }}>
@@ -42,4 +35,3 @@ export const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
         </FormContext.Provider>
     );
 };
-

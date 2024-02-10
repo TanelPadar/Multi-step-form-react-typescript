@@ -60,7 +60,7 @@ const StepFourthView = ({ nextStep, prevStep, openStep}: StepFourthViewProps) =>
                     <div className="d-flex w-100 justify-content-between align-items-center">
                         <div className="d-block p-3">
                             {selectedServices.map((service, index) =>
-                                <p className="services py-1">{service.serviceName}</p>
+                                <p className="services py-1">{service.name}</p>
                             )}
                         </div>
                         <div className="d-block">
