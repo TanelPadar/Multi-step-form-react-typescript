@@ -1,47 +1,30 @@
 import React from "react";
+import { useFormContext } from "../hooks/FormContext";
+import plans from '../data/ServicePlan.json';
+import { ServicePlan } from "../models/ServicePlan";
+import MultiStepFormButton from "./MultiStepFormButton";
+import RenderServicePlan from "./RenderServicePlan";
 import Arcade from '../images/icon-arcade.svg';
 import Advanced from '../images/icon-advanced.svg';
 import Pro from '../images/icon-pro.svg';
-import { useFormContext } from "../hooks/FormContext";
-import plans from '../data/ServicePlan.json';
-import {ServicePlan} from "../models/ServicePlan";
-import MultiStepFormButton from "./MultiStepFormButton";
-
-interface ServiceCard {
-    plan: ServicePlan;
-    onClickValue: (planName: string) => void;
-}
 
 interface StepTwoViewProps {
-    title: string;
-    description: string;
     nextStep?: () => void;
     prevStep?: () => void;
-    currentStep?: number;
+    title: string;
+    description: string;
 }
 
-const StepTwoView = ({ nextStep, prevStep }: StepTwoViewProps) => {
+const StepTwoView: React.FC<StepTwoViewProps> = ({ nextStep, prevStep }) => {
     const { selectedPlan, setSelectedPlan, setIsYearlyBilling, isYearlyBilling } = useFormContext();
 
     function toggleYearlyBilling() {
         setIsYearlyBilling(prevState => !prevState);
     }
 
-    const ServiceCardDisplay = ({ onClickValue, plan }: ServiceCard) => (
-        <div className={`card col-3 ${selectedPlan && selectedPlan.name === plan.name ? " active" : ""}`} onClick={() => onClickValue(plan.name)}>
-            <div className="d-flex mt-3">
-                <img src={getImageSource(plan.name)} alt={plan.name} />
-            </div>
-            <div className="d-block mt-4">
-                <h6>{plan.name}</h6>
-                <p>{plan.getPrice(isYearlyBilling)}</p>
-            </div>
-        </div>
-    );
-
     const getImageSource = (name: string): string => {
         switch (name) {
-            case "Arcade":
+            case name:
                 return Arcade;
             case "Advanced":
                 return Advanced;
@@ -52,11 +35,8 @@ const StepTwoView = ({ nextStep, prevStep }: StepTwoViewProps) => {
         }
     }
 
-    function handleClick(planName: string) {
-        const newSelectedPlan = plans.find(plan => plan.name === planName);
-        if (newSelectedPlan) {
-            setSelectedPlan(newSelectedPlan);
-        }
+    function handleClick(plan: ServicePlan) {
+        setSelectedPlan(plan);
     }
 
     return (
@@ -68,12 +48,16 @@ const StepTwoView = ({ nextStep, prevStep }: StepTwoViewProps) => {
                     {plans.map((plan, index) => {
                         const servicePlan = new ServicePlan(plan.name, plan.monthlyPrice, plan.yearlyPrice);
                         return (
-                            <ServiceCardDisplay
+                            <RenderServicePlan
                                 key={index}
-                                plan={servicePlan}
-                                onClickValue={handleClick}
+                                imageSrc={getImageSource(servicePlan.name)}
+                                name={servicePlan.name}
+                                price={servicePlan.getPrice(isYearlyBilling)}
+                                isSelected={selectedPlan && selectedPlan.name === servicePlan.name}
+                                onClick={() => handleClick(servicePlan)}
                             />
-                        )})}
+                        )
+                    })}
                 </div>
                 <div className="mt-5 mb-2 toggle-container bg-light rounded justify-content-center d-flex align-items-center">
                     Monthly

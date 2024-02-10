@@ -15,7 +15,6 @@ interface StepThreeViewProps {
 function StepThreeView({ nextStep, prevStep }: StepThreeViewProps) {
     const { selectedServices} = useFormContext();
 
-
     return (
         <div>
             <div className="d-flex flex-column">
